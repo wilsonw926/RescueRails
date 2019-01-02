@@ -138,7 +138,7 @@ class User < ApplicationRecord
 
   scope :unlocked,                -> { where(locked: false) }
 
-  scope :inactive_volunteer,      -> (status = false) { where(active: status)}
+  scope :inactive_volunteer,      -> (status = false) { where(active: status).where(locked: status) }
   scope :house_type,              -> (type) { where(house_type: type) }
 
   HOUSE_TYPES = %w[ rent own ]
@@ -169,7 +169,8 @@ class User < ApplicationRecord
                    social_media: :social_media_manager,
                    training_team: :training_team,
                    translator: :translator,
-                   transporter: :is_transporter }
+                   transporter: :is_transporter,
+                   locked: :locked }
 
   FILTER_FLAGS.each do |param,attr|
     scope :"#{param}", -> (status = true) { where "#{attr}": status}

@@ -73,10 +73,13 @@
     <%= link_to "Boarding Buddies", users_path(boarding_buddy: true) %>
   </li>
   <li class="<%='active' if params[:active_volunteer] %>">
-    <%= link_to "Active Volunteers", users_path(active_volunteer: true) %>
+    <%= link_to "Active", users_path(active_volunteer: true) %>
   </li>
   <li class="<%='active' if params[:inactive_volunteer] %>">
-    <%= link_to "Inactive Volunteers", users_path(inactive_volunteer: false) %>
+    <%= link_to "Inactive", users_path(inactive_volunteer: true) %>
+  </li>
+  <li class="<%='active' if params[:locked] %>">
+    <%= link_to "Locked", users_path(locked: true) %>
   </li>
 </ul>
 
