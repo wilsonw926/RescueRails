@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_12_000752) do
+ActiveRecord::Schema.define(version: 2019_01_02_030406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -421,6 +421,7 @@ ActiveRecord::Schema.define(version: 2018_10_12_000752) do
     t.boolean "active", default: false, null: false, comment: "if false user is a candiate volunteer and should only be able to see and edit their profile"
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128
+    t.string "status", limit: 25
     t.index ["agreement_id"], name: "index_users_on_agreement_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["latitude", "longitude"], name: "index_users_on_latitude_and_longitude"
